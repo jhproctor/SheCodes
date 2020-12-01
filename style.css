@@ -1,0 +1,198 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+section.main {
+  display: block;
+  margin: auto;
+  width: 400px;
+  background-color: white;
+  position: relative;
+  top: 150px;
+  border-radius: 25px;
+  box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.1);
+  height: 420px;
+}
+h1.title {
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  color: #0f4c75;
+  font-size: 64px;
+  text-transform: uppercase;
+}
+h2.city {
+  font-family: "Raleway", sans-serif;
+  text-align: left;
+  font-size: 30px;
+  color: #3282b8;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+h3.date {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  padding: 0;
+  position: relative;
+  top: -10px;
+  color: #bbe1fa;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h4.current {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 85px;
+  font-weight: bold;
+  padding: 0;
+  position: relative;
+  top: -30px;
+  color: #68b0ab;
+}
+p.unit {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  position: relative;
+  top: -123px;
+  left: 95px;
+  font-weight: bold;
+  color: #68b0ab;
+}
+
+#farenheit {
+  color: #68b0ab;
+}
+#celsius {
+  color: #68b0ab;
+}
+#farenheit:hover {
+  color: #c09a6e;
+  text-decoration: none;
+}
+#celsius:hover {
+  color: #c09a6e;
+  text-decoration: none;
+}
+#farenheit:focus {
+  color: #c09a6e;
+}
+#celsius:focus {
+  color: #c09a6e;
+}
+p.highlow {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  position: relative;
+  top: -85px;
+  color: #3282b8;
+
+  text-transform: uppercase;
+}
+
+.col {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+div.left {
+  position: relative;
+  left: 30px;
+}
+
+div.right {
+  position: relative;
+  top: -220px;
+  left: 240px;
+  width: 150px;
+  margin: 0;
+}
+
+i.fa-cloud {
+  font-size: 85px;
+  color: gray;
+  text-align: center;
+  padding: 2px;
+  position: relative;
+  left: 20px;
+  text-shadow: gray 1px 0 10px;
+}
+
+p.condition {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #3282b8;
+}
+div.forecast {
+  background-color: white;
+  width: 500px;
+  display: block;
+  margin: auto;
+  padding: 5px;
+  width: 400px;
+  position: relative;
+  top: -220px;
+  margin: auto;
+  text-align: center;
+  color: #3282b8;
+}
+
+div.emoji {
+  font-size: 25px;
+}
+div.day {
+  color: #0f4c75;
+}
+
+div.search {
+  position: relative;
+  top: -190px;
+  text-align: center;
+}
+
+input.city {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  border-radius: 25px;
+  border-color: white;
+  box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.1);
+  border-width: 0;
+  text-transform: uppercase;
+  color: #d0d0d3;
+}
+input.sub {
+  background-color: transparent;
+  border-width: 0;
+  font-size: 20px;
+}
+
+.sub:hover {
+  text-shadow: #3282b8 1px 0 10px;
+}
+
+small {
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 250px;
+  color: #d0d0d3;
+}
+
+#current-location {
+  display: inline;
+  border: 0px;
+  background-color: transparent;
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+  position: relative;
+  top: -30px;
+  left: 130px;
+}
+
+#current-location:hover {
+  text-shadow: #3282b8 1px 0 10px;
+}
