@@ -13,9 +13,14 @@ let days = [
 let day = days[now.getDay()];
 
 let hour = now.getHours();
+if (hour < 10) {
+  hour= `0${hour}`;
+}
 let minutes = now.getMinutes();
-
-let currentDay = document.querySelector("h3.date");
+if (minutes < 10) {
+  minutes= `0${minutes}`;
+}
+let currentDay = document.querySelector("#date");
 currentDay.innerHTML = `${day} ${hour}:${minutes}`;
 
 // update current temperature to city searched
@@ -28,6 +33,9 @@ let high = document.querySelector("#high");
   high.innerHTML = Math.round(response.data.main.temp_max);
   let low = document.querySelector("#low");
   low.innerHTML = Math.round(response.data.main.temp_min);
+
+  let humidityElement=document.querySelector("#humidity");
+humidityElement.innerHTML=response.data.main.humidity;
 }
 
 function changeCity(event) {
@@ -65,6 +73,9 @@ let high = document.querySelector("#high");
   let low = document.querySelector("#low");
   low.innerHTML = Math.round(response.data.main.temp_min);
 
+let humidityElement=document.querySelector("#humidity");
+humidityElement.innerHTML=response.data.main.humidity;
+
 }
 
 function getLocation(position) {
@@ -99,3 +110,4 @@ convertF.addEventListener("click", toFarenheit);
 
 let convertC = document.querySelector("#celsius");
 convertC.addEventListener("click", toCelsius);
+
