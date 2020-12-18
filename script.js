@@ -22,20 +22,32 @@ if (minutes < 10) {
 }
 let currentDay = document.querySelector("#date");
 currentDay.innerHTML = `${day} ${hour}:${minutes}`;
+ //end of current time 
 
 // update current temperature to city searched
 function getTemp(response) {
-let cityTemp = Math.round(response.data.main.temp);
+celsiusTemp = response.data.main.temp;
+tempHigh = response.data.main.temp_max;
+tempLow = response.data.main.temp_min;
+let cityTemp = Math.round(celsiusTemp);
 let currentTemp = document.querySelector("h4.current");
 currentTemp.innerHTML = cityTemp;
 
 let high = document.querySelector("#high");
-  high.innerHTML = Math.round(response.data.main.temp_max);
-  let low = document.querySelector("#low");
-  low.innerHTML = Math.round(response.data.main.temp_min);
+high.innerHTML = Math.round(tempHigh);
+let low = document.querySelector("#low");
+low.innerHTML = Math.round(tempLow);
 
-  let humidityElement=document.querySelector("#humidity");
+let humidityElement=document.querySelector("#humidity");
 humidityElement.innerHTML=response.data.main.humidity;
+
+let currentCondition = document.querySelector("#conditions");
+currentCondition.innerHTML=response.data.weather[0].description;
+
+let weatherIcon = response.data.weather[0].icon;
+let iconElement = document.querySelector("#weatherIcon");
+iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
+iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function changeCity(event) {
@@ -63,18 +75,28 @@ function updateLocation(response) {
    let city = response.data.name;
    let cityHeader = document.querySelector("#city-header");
     cityHeader.innerHTML = `${city}`;
-
-    let cityTemp = Math.round(response.data.main.temp);
+celsiusTemp = response.data.main.temp;
+tempHigh = response.data.main.temp_max;
+tempLow = response.data.main.temp_min;
+    let cityTemp = Math.round(celsiusTemp);
 let currentTemp = document.querySelector("h4.current");
 currentTemp.innerHTML = cityTemp;
 
 let high = document.querySelector("#high");
-  high.innerHTML = Math.round(response.data.main.temp_max);
+  high.innerHTML = Math.round(tempHigh);
   let low = document.querySelector("#low");
-  low.innerHTML = Math.round(response.data.main.temp_min);
+  low.innerHTML = Math.round(tempLow);
 
 let humidityElement=document.querySelector("#humidity");
 humidityElement.innerHTML=response.data.main.humidity;
+
+let currentCondition = document.querySelector("#conditions");
+currentCondition.innerHTML=response.data.weather[0].description;
+
+let weatherIcon = response.data.weather[0].icon;
+let iconElement = document.querySelector("#weatherIcon");
+iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
+iconElement.setAttribute("alt", response.data.weather[0].description);
 
 }
 
@@ -100,14 +122,36 @@ currentLocation.addEventListener("click", geoLocation);
 
 function toFarenheit(event) {
   event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let farenheitTemp = (celsiusTemp * (9/5)) + 32;
+temperatureElement.innerHTML = Math.round(farenheitTemp);
+let highTempElement = document.querySelector("#high");
+let highTempF = (tempHigh * (9/5)) + 32;
+highTempElement.innerHTML = Math.round(highTempF);
+let lowTempElement = document.querySelector("#low");
+let lowTempF = (tempLow * (9/5)) + 32;
+lowTempElement.innerHTML = Math.round(lowTempF);
 }
 
 function toCelsius(event) {
   event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+  let highTempElement = document.querySelector("#high");
+highTempElement.innerHTML = Math.round(tempHigh);
+let lowTempElement = document.querySelector("#low");
+lowTempElement.innerHTML = Math.round(tempLow);
 }
+
+
+let celsiusTemp = null;
+let tempHigh = null;
+let tempLow = null;
+
 let convertF = document.querySelector("#farenheit");
 convertF.addEventListener("click", toFarenheit);
 
 let convertC = document.querySelector("#celsius");
 convertC.addEventListener("click", toCelsius);
 
+//change units end
