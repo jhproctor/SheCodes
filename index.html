@@ -23,8 +23,8 @@
                 <h2 class="city" id="city-header">
                     Chicago
                 </h2>
-                <h3 class="date"></h3>
-                <h4 class="current">
+                <h3 class="date">Updated: <span id="date"></span></h3>
+                <h4 class="current" id="temperature">
                     35
                 </h4>
                 <p class="unit">
@@ -42,11 +42,11 @@
             </div>
     
             <div class="right">
-                <i class="fas fa-cloud"></i>
+                <span><img id="weatherIcon" src="http://openweathermap.org/img/wn/04d@2x.png" alt=""></span>
                 <p class="condition">
-                    Cloudy
+                    <span id="conditions"> Cloudy </span>
                     <br />
-                    15% chance of rain
+                    <span id="humidity">95</span>% Humidity
                 </p>
             </div>
     
