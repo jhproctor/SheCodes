@@ -101,7 +101,7 @@ div.left {
 
 div.right {
   position: relative;
-  top: -220px;
+  top: -235px;
   left: 240px;
   width: 150px;
   margin: 0;
@@ -147,7 +147,7 @@ div.day {
 
 div.search {
   position: relative;
-  top: -190px;
+  top: -200px;
   text-align: center;
 }
 
@@ -195,4 +195,14 @@ small {
 
 #current-location:hover {
   text-shadow: #3282b8 1px 0 10px;
+}
+
+#weatherIcon {
+  font-size: 85px;
+  color: gray;
+  text-align: center;
+  padding: 2px;
+  position: relative;
+  left: 20px;
+  text-shadow: gray 1px 0 10px;
 }
