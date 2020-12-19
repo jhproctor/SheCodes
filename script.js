@@ -166,13 +166,15 @@ iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function getLocation(position) {
-  console.log(position);
   let lat = position.coords.latitude;
   let long= position.coords.longitude;
   let apiKey = "c5b9a1b3ddc23e6e85d9dea7be5ee181";
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
   let totalUrl = `${apiUrl}&units=metric&lat=${lat}&lon=${long}&appid=${apiKey}`;
  axios.get(totalUrl).then(updateLocation);
+
+apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude={current,minutely,hourly,alerts}&units=metric&appid=${apiKey}`;
+axios.get(apiUrl).then(getForecast);
 }
 
 function geoLocation(event) {
