@@ -94,6 +94,11 @@ p.highlow {
   font-weight: bold;
 }
 
+div.forecast-row {
+  text-align: center;
+  display: inline;
+}
+
 div.left {
   position: relative;
   left: 30px;
@@ -143,8 +148,12 @@ div.emoji {
 }
 div.day {
   color: #0f4c75;
+  text-align: center;
 }
-
+div.tempF {
+  color: #3282b8;
+  text-align: center;
+}
 div.search {
   position: relative;
   top: -220px;
@@ -205,4 +214,14 @@ small {
   position: relative;
   left: 20px;
   text-shadow: gray 1px 0 10px;
+}
+
+#forecast-icon {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+#forecast-day {
+  text-align: center;
 }
