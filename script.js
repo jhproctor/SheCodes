@@ -44,29 +44,28 @@ let day = now.getDay()
 } else if (day + number + 1 > 6) {
   return (day + number - 6)
 }
-
 }
 
 function getForecast(response) {
 let forecastElement = document.querySelector("#forecast");
 forecastElement.innerHTML = null;
 let forecast = null;
-
+forecastArray = [];
 for (let index = 0; index < 6; index++) {
 forecast = response.data.daily[index];
 let num = index;
-tempForecast = Math.round(forecast.temp.day);
+tempForecast= Math.round(forecast.temp.day);
 forecastElement.innerHTML += `
-
 
 <div class="col-2" id="forecast-day">
  <div class="row">
  <div class="col emoji"><img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" id="forecast-icon"></div>
  <div class="col day">${daysAb[forecastDay(num)]}</div>
- <div class="col tempF" id="forecast-temperature-${[index]}">${tempForecast}</div>
+ <div class="col tempF" id="forecast-temperature"><span id="day-${[index]}">${tempForecast}</span><span id="unit-${[index]}"> C</span></div>
  </div>
  </div>
 `;
+forecastArray.push(tempForecast);
 }
 }
 
@@ -189,6 +188,10 @@ currentLocation.addEventListener("click", geoLocation);
 
 function toFarenheit(event) {
   event.preventDefault();
+//update selected unit
+  convertF.classList.add("active");
+  convertC.classList.remove("active");
+
   let temperatureElement = document.querySelector("#temperature");
   let farenheitTemp = (celsiusTemp * (9/5)) + 32;
 temperatureElement.innerHTML = Math.round(farenheitTemp);
@@ -202,13 +205,15 @@ let windSpeedElement = document.querySelector("#wind-speed");
 let englishWindSpeed = Math.round(windSpeed * 2.237);
 windSpeedElement.innerHTML = `${englishWindSpeed} mph`;
 
-//for (let index = 0; index < 6; index++) {
 
-//let forecastTemperatureElement = document.querySelector(`#forecast-temperature-${[index]}`);
-//console.log(forecastTemperatureElement)
-//let forecastTemperatureFarenheit = Math.round((forecastTemperatureElement * (9/5)) + 32);
-//forecastTemperatureElement.innerHTML = `${forecastTemperatureFarenheit} F`;
-//}
+
+for (let index = 0; index < 6; index++) {
+let forecastTemperatureElement = document.querySelector(`#day-${[index]}`);
+let tempF = forecastArray[index] *(9/5) + 32;
+forecastTemperatureElement.innerHTML = `${Math.round(tempF)}`;
+let unitChangeF = document.querySelector(`#unit-${[index]}`);
+unitChangeF.innerHTML = " F";
+}
 }
 
 
@@ -216,6 +221,9 @@ windSpeedElement.innerHTML = `${englishWindSpeed} mph`;
 
 function toCelsius(event) {
   event.preventDefault();
+//update selected unit
+  convertF.classList.remove("active");
+  convertC.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemp);
   let highTempElement = document.querySelector("#high");
@@ -224,20 +232,28 @@ let lowTempElement = document.querySelector("#low");
 lowTempElement.innerHTML = Math.round(tempLow);
 let windSpeedElement = document.querySelector("#wind-speed");
 windSpeedElement.innerHTML = `${Math.round(windSpeed)} m/sec`;
+
+
+for (let index = 0; index < 6; index++) {
+let forecastTemperatureElement = document.querySelector(`#day-${[index]}`);
+let tempC = forecastArray[index];
+forecastTemperatureElement.innerHTML = `${Math.round(tempC)}`;
+let unitChangeC = document.querySelector(`#unit-${[index]}`);
+unitChangeC.innerHTML = " C";
 }
-
-
-let celsiusTemp = null;
-let tempHigh = null;
-let tempLow = null;
-let windSpeed = null;
-let tempForecast = null;
+}
 
 let convertF = document.querySelector("#farenheit");
 convertF.addEventListener("click", toFarenheit);
 
 let convertC = document.querySelector("#celsius");
 convertC.addEventListener("click", toCelsius);
-
 //change units end
+
+let celsiusTemp = null;
+let tempHigh = null;
+let tempLow = null;
+let windSpeed = null;
+let tempForecast = null;
+let forecastArray = null;
 
