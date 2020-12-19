@@ -132,7 +132,7 @@ div.forecast {
   padding: 5px;
   width: 400px;
   position: relative;
-  top: -220px;
+  top: -230px;
   margin: auto;
   text-align: center;
   color: #3282b8;
@@ -147,7 +147,7 @@ div.day {
 
 div.search {
   position: relative;
-  top: -200px;
+  top: -220px;
   text-align: center;
 }
 
