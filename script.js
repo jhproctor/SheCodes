@@ -29,6 +29,8 @@ function getTemp(response) {
 celsiusTemp = response.data.main.temp;
 tempHigh = response.data.main.temp_max;
 tempLow = response.data.main.temp_min;
+windSpeed= response.data.wind.speed;
+
 let cityTemp = Math.round(celsiusTemp);
 let currentTemp = document.querySelector("h4.current");
 currentTemp.innerHTML = cityTemp;
@@ -43,6 +45,9 @@ humidityElement.innerHTML=response.data.main.humidity;
 
 let currentCondition = document.querySelector("#conditions");
 currentCondition.innerHTML=response.data.weather[0].description;
+
+let windSpeedElement = document.querySelector("#wind-speed");
+windSpeedElement.innerHTML = `${windSpeed} m/sec`;
 
 let weatherIcon = response.data.weather[0].icon;
 let iconElement = document.querySelector("#weatherIcon");
@@ -78,6 +83,7 @@ function updateLocation(response) {
 celsiusTemp = response.data.main.temp;
 tempHigh = response.data.main.temp_max;
 tempLow = response.data.main.temp_min;
+windSpeed = response.data.wind.speed;
     let cityTemp = Math.round(celsiusTemp);
 let currentTemp = document.querySelector("h4.current");
 currentTemp.innerHTML = cityTemp;
@@ -86,10 +92,11 @@ let high = document.querySelector("#high");
   high.innerHTML = Math.round(tempHigh);
   let low = document.querySelector("#low");
   low.innerHTML = Math.round(tempLow);
-
+console.log(response.data);
 let humidityElement=document.querySelector("#humidity");
 humidityElement.innerHTML=response.data.main.humidity;
-
+let windSpeedElement = document.querySelector("#wind-speed");
+windSpeedElement.innerHTML = `${windSpeed} m/sec`;
 let currentCondition = document.querySelector("#conditions");
 currentCondition.innerHTML=response.data.weather[0].description;
 
@@ -131,6 +138,11 @@ highTempElement.innerHTML = Math.round(highTempF);
 let lowTempElement = document.querySelector("#low");
 let lowTempF = (tempLow * (9/5)) + 32;
 lowTempElement.innerHTML = Math.round(lowTempF);
+let windSpeedElement = document.querySelector("#wind-speed");
+let englishWindSpeed = Math.round(windSpeed * 2.237);
+windSpeedElement.innerHTML = `${englishWindSpeed} mph`;
+
+
 }
 
 function toCelsius(event) {
@@ -141,12 +153,15 @@ function toCelsius(event) {
 highTempElement.innerHTML = Math.round(tempHigh);
 let lowTempElement = document.querySelector("#low");
 lowTempElement.innerHTML = Math.round(tempLow);
+let windSpeedElement = document.querySelector("#wind-speed");
+windSpeedElement.innerHTML = `${windSpeed} m/sec`;
 }
 
 
 let celsiusTemp = null;
 let tempHigh = null;
 let tempLow = null;
+let windSpeed = null;
 
 let convertF = document.querySelector("#farenheit");
 convertF.addEventListener("click", toFarenheit);
