@@ -54,7 +54,7 @@ p.unit {
   position: relative;
   top: -123px;
   left: 95px;
-  font-weight: bold;
+
   color: #68b0ab;
 }
 
@@ -67,6 +67,7 @@ p.unit {
 #farenheit:hover {
   color: #c09a6e;
   text-decoration: none;
+  cursor: ;
 }
 #celsius:hover {
   color: #c09a6e;
@@ -137,7 +138,7 @@ div.forecast {
   padding: 5px;
   width: 400px;
   position: relative;
-  top: -230px;
+  top: -240px;
   margin: auto;
   text-align: center;
   color: #3282b8;
@@ -156,7 +157,7 @@ div.tempF {
 }
 div.search {
   position: relative;
-  top: -220px;
+  top: -230px;
   text-align: center;
 }
 
@@ -224,4 +225,8 @@ small {
 
 #forecast-day {
   text-align: center;
+}
+
+a.active {
+  font-weight: bolder;
 }
